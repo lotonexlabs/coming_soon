@@ -19,30 +19,30 @@
     .circle {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.15;
+      opacity: 0.3; /* Increase opacity for better visibility */
     }
 
     .circle-1 {
-      width: 300px;
-      height: 300px;
-      top: -150px;
-      right: -150px;
+      width: 350px; /* Increase size */
+      height: 350px;
+      top: -175px;
+      right: -175px;
       background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
       animation: float 8s ease-in-out infinite;
     }
 
     .circle-2 {
-      width: 200px;
-      height: 200px;
-      bottom: -100px;
-      left: -100px;
+      width: 250px; /* Increase size */
+      height: 250px;
+      bottom: -125px;
+      left: -125px;
       background: linear-gradient(135deg, #98FB98, #90EE90);
       animation: float 6s ease-in-out infinite reverse;
     }
 
     .circle-3 {
-      width: 100px;
-      height: 100px;
+      width: 150px; /* Increase size */
+      height: 150px;
       top: 20%;
       left: 10%;
       background: linear-gradient(135deg, #87CEEB, #ADD8E6);
@@ -62,7 +62,7 @@
 
     .title {
       color: #0066cc;
-      font-size: 4rem;
+      font-size: 4.5rem; /* Increase font size */
       font-weight: bold;
       opacity: 0;
       animation: fadeIn 1.5s ease forwards;
@@ -93,18 +93,18 @@
 
     .text-primary {
       color: #0066cc;
-      font-size: 2rem;
+      font-size: 2.5rem; /* Increase font size */
     }
 
     .text-secondary {
       color: #0066cc;
-      font-size: 1.5rem;
+      font-size: 2rem; /* Increase font size */
       opacity: 0.9;
     }
 
     .dots {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
       opacity: 0;
       animation: fadeIn 1s ease forwards 2s;
@@ -112,8 +112,8 @@
     }
 
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 10px; /* Increase size */
+      height: 10px;
       border-radius: 50%;
       background: #0066cc;
       animation: dotPulse 1.5s ease-in-out infinite;
@@ -170,11 +170,11 @@
 
     .particle {
       position: absolute;
-      width: 4px;
-      height: 4px;
+      width: 5px; /* Increase size */
+      height: 5px;
       background: #0066cc;
       border-radius: 50%;
-      opacity: 0.2;
+      opacity: 0.5; /* Increase opacity */
       animation: particleFloat 15s linear infinite;
     }
 
@@ -189,16 +189,16 @@
 
     @media (max-width: 600px) {
       .title {
-        font-size: 3rem;
+        font-size: 3.5rem; /* Adjusted for mobile */
       }
       .text-primary {
-        font-size: 1.7rem;
+        font-size: 2rem; /* Adjusted for mobile */
       }
       .text-secondary {
-        font-size: 1.3rem;
+        font-size: 1.7rem; /* Adjusted for mobile */
       }
       .circle-1, .circle-2, .circle-3 {
-        display: none;
+        display: block; /* Ensure circles are visible on mobile */
       }
     }
   </style>
