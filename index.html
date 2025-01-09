@@ -19,30 +19,30 @@
     .circle {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.3; /* Increase opacity for better visibility */
+      opacity: 0.3;
     }
 
     .circle-1 {
-      width: 350px; /* Increase size */
-      height: 350px;
-      top: -175px;
-      right: -175px;
+      width: 250px;
+      height: 250px;
+      top: -125px;
+      right: -125px;
       background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
       animation: float 8s ease-in-out infinite;
     }
 
     .circle-2 {
-      width: 250px; /* Increase size */
-      height: 250px;
-      bottom: -125px;
-      left: -125px;
+      width: 150px;
+      height: 150px;
+      bottom: -75px;
+      left: -75px;
       background: linear-gradient(135deg, #98FB98, #90EE90);
       animation: float 6s ease-in-out infinite reverse;
     }
 
     .circle-3 {
-      width: 150px; /* Increase size */
-      height: 150px;
+      width: 100px;
+      height: 100px;
       top: 20%;
       left: 10%;
       background: linear-gradient(135deg, #87CEEB, #ADD8E6);
@@ -57,12 +57,12 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      padding: 20px; /* Add padding for mobile */
+      padding: 20px;
     }
 
     .title {
       color: #0066cc;
-      font-size: 4.5rem; /* Increase font size */
+      font-size: 4.5rem;
       font-weight: bold;
       opacity: 0;
       animation: fadeIn 1.5s ease forwards;
@@ -93,12 +93,12 @@
 
     .text-primary {
       color: #0066cc;
-      font-size: 2.5rem; /* Increase font size */
+      font-size: 2.5rem;
     }
 
     .text-secondary {
       color: #0066cc;
-      font-size: 2rem; /* Increase font size */
+      font-size: 2rem;
       opacity: 0.9;
     }
 
@@ -112,7 +112,7 @@
     }
 
     .dot {
-      width: 10px; /* Increase size */
+      width: 10px;
       height: 10px;
       border-radius: 50%;
       background: #0066cc;
@@ -170,11 +170,11 @@
 
     .particle {
       position: absolute;
-      width: 5px; /* Increase size */
+      width: 5px;
       height: 5px;
       background: #0066cc;
       border-radius: 50%;
-      opacity: 0.5; /* Increase opacity */
+      opacity: 0.5;
       animation: particleFloat 15s linear infinite;
     }
 
@@ -188,17 +188,22 @@
     }
 
     @media (max-width: 600px) {
+      body {
+        height: 100%;
+      }
       .title {
-        font-size: 3.5rem; /* Adjusted for mobile */
+        font-size: 3.5rem;
       }
       .text-primary {
-        font-size: 2rem; /* Adjusted for mobile */
+        font-size: 2rem;
       }
       .text-secondary {
-        font-size: 1.7rem; /* Adjusted for mobile */
+        font-size: 1.7rem;
       }
       .circle-1, .circle-2, .circle-3 {
-        display: block; /* Ensure circles are visible on mobile */
+        width: 150px; /* Smaller circles for mobile */
+        height: 150px;
+        opacity: 0.4;
       }
     }
   </style>
