@@ -174,22 +174,6 @@
             transform: translateY(-5px);
         }
 
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #0066cc;
-            border-radius: 50%;
-            opacity: 0.2;
-            --x: calc(random() - 0.5); /* Random horizontal position */
-            animation: particleFloat 15s linear infinite;
-        }
-
-        @keyframes particleFloat {
-            0% { transform: translate(calc(var(--x) * 100vw), 100vh); }
-            100% { transform: translate(calc(var(--x) * 100vw), -100vh); }
-        }
-
         /* Media query for reduced motion */
         @media (prefers-reduced-motion: reduce) {
             *,
@@ -207,10 +191,6 @@
     <div class="circle circle-1"></div>
     <div class="circle circle-2"></div>
     <div class="circle circle-3"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
     <main class="container">
         <div class="title">LotoNex Labs</div>
         <div class="text-container">
