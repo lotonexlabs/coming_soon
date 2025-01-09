@@ -14,6 +14,144 @@
             align-items: center;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf2 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            will-change: transform;
+        }
+
+        .circle-1 { /* ... (circle styles) */
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -150px;
+            background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: -100px;
+            background: linear-gradient(135deg, #98FB98, #90EE90);
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        .circle-3 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            background: linear-gradient(135deg, #87CEEB, #ADD8E6);
+            opacity: 0.3;
+            animation: float 7s ease-in-out infinite 1s;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .title {
+            color: #0066cc;
+            font-size: 5rem;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            will-change: opacity, transform;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: #0066cc;
+            transform: translateX(-50%);
+            animation: lineGrow 1s ease forwards 1.5s;
+        }
+
+        .text-container {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+            will-change: opacity, transform;
+            width: 100%; /* Important for text centering */
+        }
+
+        .text-primary {
+            color: #0066cc;
+            font-size: 2rem;
+            text-align: center; /* Center the text */
+            line-height: 1.2;
+        }
+        /* REMOVED .text-secondary */
+
+        .dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 2s;
+            margin: 1.5rem auto 0;
+            will-change: opacity, transform;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #0066cc;
+            animation: dotPulse 1.5s ease-in-out infinite;
+        }
+
+        .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        /* REMOVED .particle and @keyframes particleFloat */<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LotoNex Labs</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf2 100%);
             gap: 2rem;
             overflow: hidden;
             position: relative;
@@ -173,6 +311,7 @@
         .text-container:hover {
             transform: translateY(-5px);
         }
+
 
         /* Media query for reduced motion */
         @media (prefers-reduced-motion: reduce) {
