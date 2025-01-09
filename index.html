@@ -2,7 +2,6 @@
 <html>
 <head>
   <style>
-    /* Previous styles remain the same until .circle */
     body {
       margin: 0;
       height: 100vh;
@@ -17,11 +16,10 @@
       position: relative;
     }
 
-    /* Updated circle styles with soft colors */
     .circle {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.15; /* Slightly increased opacity for better visibility */
+      opacity: 0.15;
     }
 
     .circle-1 {
@@ -29,7 +27,7 @@
       height: 300px;
       top: -150px;
       right: -150px;
-      background: linear-gradient(135deg, #FFB6C1, #FFC0CB); /* Soft pink */
+      background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
       animation: float 8s ease-in-out infinite;
     }
 
@@ -38,7 +36,7 @@
       height: 200px;
       bottom: -100px;
       left: -100px;
-      background: linear-gradient(135deg, #98FB98, #90EE90); /* Soft green */
+      background: linear-gradient(135deg, #98FB98, #90EE90);
       animation: float 6s ease-in-out infinite reverse;
     }
 
@@ -47,11 +45,10 @@
       height: 100px;
       top: 20%;
       left: 10%;
-      background: linear-gradient(135deg, #87CEEB, #ADD8E6); /* Soft blue */
+      background: linear-gradient(135deg, #87CEEB, #ADD8E6);
       animation: float 7s ease-in-out infinite 1s;
     }
 
-    /* All other styles remain exactly the same */
     .container {
       text-align: center;
       z-index: 2;
@@ -60,6 +57,7 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
+      padding: 20px; /* Add padding for mobile */
     }
 
     .title {
@@ -187,6 +185,21 @@
     @keyframes particleFloat {
       0% { transform: translateY(100vh); }
       100% { transform: translateY(-100vh); }
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 2.5rem;
+      }
+      .text-primary {
+        font-size: 1.2rem;
+      }
+      .text-secondary {
+        font-size: 1rem;
+      }
+      .circle-1, .circle-2, .circle-3 {
+        display: none;
+      }
     }
   </style>
 </head>
