@@ -1,346 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LotoNex Labs</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf2 100%);
-            overflow: hidden;
-            position: relative;
-        }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf2 100%);
+      gap: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
 
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            will-change: transform;
-        }
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+    }
 
-        .circle-1 { /* ... (circle styles) */
-            width: 300px;
-            height: 300px;
-            top: -150px;
-            right: -150px;
-            background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
-            opacity: 0.3;
-            animation: float 8s ease-in-out infinite;
-        }
+    .circle-1 {
+      width: 250px;
+      height: 250px;
+      top: -125px;
+      right: -125px;
+      background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
+      animation: float 8s ease-in-out infinite;
+    }
 
-        .circle-2 {
-            width: 200px;
-            height: 200px;
-            bottom: -100px;
-            left: -100px;
-            background: linear-gradient(135deg, #98FB98, #90EE90);
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite reverse;
-        }
+    .circle-2 {
+      width: 150px;
+      height: 150px;
+      bottom: -75px;
+      left: -75px;
+      background: linear-gradient(135deg, #98FB98, #90EE90);
+      animation: float 6s ease-in-out infinite reverse;
+    }
 
-        .circle-3 {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            left: 10%;
-            background: linear-gradient(135deg, #87CEEB, #ADD8E6);
-            opacity: 0.3;
-            animation: float 7s ease-in-out infinite 1s;
-        }
+    .circle-3 {
+      width: 100px;
+      height: 100px;
+      top: 20%;
+      left: 10%;
+      background: linear-gradient(135deg, #87CEEB, #ADD8E6);
+      animation: float 7s ease-in-out infinite 1s;
+    }
 
-        .container {
-            text-align: center;
-            z-index: 2;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 800px;
-        }
+    .container {
+      text-align: center;
+      z-index: 2;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+    }
 
-        .title {
-            color: #0066cc;
-            font-size: 5rem;
-            font-weight: bold;
-            opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            will-change: opacity, transform;
-        }
+    .title {
+      color: #0066cc;
+      font-size: 3rem;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
 
-        .title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background: #0066cc;
-            transform: translateX(-50%);
-            animation: lineGrow 1s ease forwards 1.5s;
-        }
+    .title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: #0066cc;
+      transform: translateX(-50%);
+      animation: lineGrow 1s ease forwards 1.5s;
+    }
 
-        .text-container {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards 0.5s;
-            will-change: opacity, transform;
-            width: 100%; /* Important for text centering */
-        }
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards 0.5s;
+    }
 
-        .text-primary {
-            color: #0066cc;
-            font-size: 2rem;
-            text-align: center; /* Center the text */
-            line-height: 1.2;
-        }
-        /* REMOVED .text-secondary */
+    .text-primary {
+      color: #0066cc;
+      font-size: 2rem;
+    }
 
-        .dots {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 2s;
-            margin: 1.5rem auto 0;
-            will-change: opacity, transform;
-        }
+    .text-secondary {
+      color: #0066cc;
+      font-size: 1.5rem;
+      opacity: 0.9;
+    }
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #0066cc;
-            animation: dotPulse 1.5s ease-in-out infinite;
-        }
+    .dots {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 2s;
+      margin: 0 auto;
+    }
 
-        .dot:nth-child(1) {
-            animation-delay: 0s;
-        }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0066cc;
+      animation: dotPulse 1.5s ease-in-out infinite;
+    }
 
-        .dot:nth-child(2) {
-            animation-delay: 0.3s;
-        }
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-        .dot:nth-child(3) {
-            animation-delay: 0.6s;
-        }
+    .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
 
-        /* REMOVED .particle and @keyframes particleFloat */<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LotoNex Labs</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf2 100%);
-            gap: 2rem;
-            overflow: hidden;
-            position: relative;
-        }
+    @keyframes lineGrow {
+      to { width: 100px; }
+    }
 
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.15;
-            will-change: transform; /* Performance optimization */
-        }
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.5); opacity: 1; }
+    }
 
-        .circle-1 {
-            width: 300px;
-            height: 300px;
-            top: -150px;
-            right: -150px;
-            background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
-            animation: float 8s ease-in-out infinite;
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
 
-        .circle-2 {
-            width: 200px;
-            height: 200px;
-            bottom: -100px;
-            left: -100px;
-            background: linear-gradient(135deg, #98FB98, #90EE90);
-            animation: float 6s ease-in-out infinite reverse;
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-        .circle-3 {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            left: 10%;
-            background: linear-gradient(135deg, #87CEEB, #ADD8E6);
-            animation: float 7s ease-in-out infinite 1s;
-        }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .container {
-            text-align: center;
-            z-index: 2;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
+    .title:hover {
+      transform: scale(1.05);
+      color: #0052a3;
+    }
 
-        .title {
-            color: #0066cc;
-            font-size: 4rem;
-            font-weight: bold;
-            opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            will-change: opacity, transform; /* Performance optimization */
-        }
+    .text-container:hover {
+      transform: translateY(-5px);
+    }
 
-        .title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background: #0066cc;
-            transform: translateX(-50%);
-            animation: lineGrow 1s ease forwards 1.5s;
-        }
+    .particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #0066cc;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: particleFloat 15s linear infinite;
+    }
 
-        .text-container {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards 0.5s;
-            will-change: opacity, transform; /* Performance optimization */
-        }
+    .particle:nth-child(2) { animation-delay: 5s; left: 20%; }
+    .particle:nth-child(3) { animation-delay: 7s; left: 80%; }
+    .particle:nth-child(4) { animation-delay: 11s; left: 40%; }
 
-        .text-primary {
-            color: #0066cc;
-            font-size: 1.5rem;
-        }
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100vh); }
+    }
 
-        .text-secondary {
-            color: #0066cc;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .dots {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 2s;
-            margin: 0 auto;
-            will-change: opacity, transform; /* Performance optimization */
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #0066cc;
-            animation: dotPulse 1.5s ease-in-out infinite;
-        }
-
-        .dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes lineGrow {
-            to { width: 100px; }
-        }
-
-        @keyframes dotPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.5); opacity: 1; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .title:hover {
-            transform: scale(1.05);
-            color: #0052a3;
-        }
-
-        .text-container:hover {
-            transform: translateY(-5px);
-        }
-
-
-        /* Media query for reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-    </style>
+    @media (max-width: 600px) {
+      body {
+        height: 100%;
+      }
+      .title {
+        font-size: 2.5rem;
+      }
+      .text-primary {
+        font-size: 1.7rem;
+      }
+      .text-secondary {
+        font-size: 1.3rem;
+      }
+      .circle-1, .circle-2, .circle-3 {
+        width: 100px;
+        height: 100px;
+        opacity: 0.4;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="circle circle-1"></div>
-    <div class="circle circle-2"></div>
-    <div class="circle circle-3"></div>
-    <main class="container">
-        <div class="title">LotoNex Labs</div>
-        <div class="text-container">
-            <div class="text-primary">Exciting things are in the works!</div>
-            <div class="text-secondary">Coming soon</div>
-        </div>
-        <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-    </main>
+  <div class="circle circle-1"></div>
+  <div class="circle circle-2"></div>
+  <div class="circle circle-3"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="container">
+    <div class="title">LotoNex Labs</div>
+    <div class="text-container">
+      <div class="text-primary">Exciting things are in the works!</div>
+    </div>
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
 </body>
 </html>
